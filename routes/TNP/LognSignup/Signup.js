@@ -11,7 +11,6 @@ Router.get("/",function(req,res){
   });
   
 Router.post("/",function(req,res){
-  console.log(req.body.password);
     const newMember = new Member({
       Name: req.body.Name,
       Contact:req.body.Contact,

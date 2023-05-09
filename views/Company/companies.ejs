@@ -1,6 +1,22 @@
 <%- include("../partials/company/company-header"); -%>
 <br><br><br><br><br><br><br>
 <div class="container justify-content-center">
+    <h1 style="padding-left: 25%; padding-bottom: 3%;"> Companies that hire our students </h1>
+
+    <select name="filter" id="filter"  style="margin-left: 80%;">       
+        <option value="">Select Filter type</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="MECH">MECH</option>
+        <option value="CIVIL">CIVIL</option>
+        <option value="CHEM">CHEM</option>
+        <option value="BIOTECH">BIOTECH</option>
+        <option value="MME">MME</option>
+    </select>     
+    <div></div> 
+    <div class="error" id="selected-Branch"></div>
+
     <table>
     <tr>
         <th> Company</th>
@@ -10,12 +26,12 @@
         <th> Previous year Intake</th>
     </tr>
     <% comp.forEach(function(company){ %>
-    <tr>
-        <td> <a href= "/companies/<%= company.Name%>"> <%= company.Name %> </a></td>
-        <td> <%= company.Type %> </td>
-        <td> <%= company.Branches.join(", ") %> </td>
-        <td> <%= company.Roles %> </td>
-        <td> <%= company.PrevYearIntake[company.PrevYearIntake.length - 1] %> </td>
+    <tr id="data">
+             <td> <a href= "/companies/<%= company.Name%>"> <%= company.Name %> </a></td>
+            <td> <%= company.Type %> </td>
+            <td> <%= company.Branches.join(", ") %> </td>
+            <td> <%= company.Roles %> </td>
+            <td> <%= company.PrevYearIntake[company.PrevYearIntake.length - 1] %> </td>
     </tr>
     <% }); %>
 </table>          

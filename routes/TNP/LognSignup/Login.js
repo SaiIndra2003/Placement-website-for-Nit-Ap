@@ -21,7 +21,7 @@ Router.post("/", async function(req,res){
         else{
             passport.authenticate("local")(req,res,function(){
                 res.redirect("/TNPPage"); 
-            });
+            }); 
         }
     });
 });

@@ -28,7 +28,7 @@ app.use(express.static("vendor"));
 app.use(methodOverride('_method'));
 
 app.use(session({
-  secret: process.env.secret,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -50,6 +50,7 @@ app.use("/tnpSignup",signupRoute);
 app.use("/login",loginRoute);
 app.use("/TNPPage",tnpRoute);
 app.use("/logout",logoutRoute);
+
 
 
 //User Interface
