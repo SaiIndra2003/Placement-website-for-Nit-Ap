@@ -2,34 +2,35 @@ const express = require("express");
 const Router = express.Router();
 const Stories = require("../../../schemas/PlacementStoryModel");
 
-Router.get("/",async function(req,res){
-    res.render("Stories/AddStory");
+Router.get("/", async function (req, res) {
+  res.render("Stories/AddStory");
 });
 
-
-Router.post("/",async function(req,res){
-    const story = new Stories({
-        Name: req.body.Name,
-        Branch: req.body.Branch,
-        Mail_id: req.body.Mail_id,
-        CompanyPlaced: req.body.Company,
-        CTC: req.body.CTC,
-        JobType: req.body.Type,
-        Role: req.body.Role,
-        PlacementType: req.body.PlacementType,
-        Story: req.body.Story,
-        HowtoPrepare: req.body.Prepare,
-        Suggestions: req.body.Suggestions,
-        Active: false
-    });
-
-    story.save(function(err){
-        if(!err){
-            console.log("Added succesfully");
-            res.redirect("/stories");
-        }
-    })
+Router.post("/", async function (req, res) {
+  const story = new Stories({
+    Name: req.body.Name,
+    Branch: req.body.Branch,
+    Mail_id: req.body.Mail_id,
+    CompanyPlaced: req.body.Company,
+    CTC: req.body.CTC,
+    JobType: req.body.Type,
+    Role: req.body.Role,
+    PlacementType: req.body.PlacementType,
+    Story: req.body.Story,
+    HowtoPrepare: req.body.Prepare,
+    Suggestions: req.body.Suggestions,
+    Active: false,
+  });
+  console.log("Created new story");
+  console.log(story);
+  story.save(function (err) {
+    if (!err) {
+      console.log("Added succesfully");
+      res.redirect("/stories");
+    } else {
+      console.log(err);
+    }
+  });
 });
-
 
 module.exports = Router;
